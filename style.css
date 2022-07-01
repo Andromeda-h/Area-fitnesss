@@ -1,0 +1,559 @@
+@charset "UTF-8";
+/*
+
+  Con este reset vamos a resolver:
+    👉 Unificar el uso de Custom Properties
+    👉 Problemas de box-model más generales
+    👉 Problemas con imagenes, vídeos e iconos svg
+    👉 Problemas con tipografías y etiquetas input en formularios
+    👉 Unificar la tipografía de todas las etiquetas de una web
+*/
+/* Aquí definimos las Custom properties */
+:root {
+  --negro: #393939;
+  /* Tipografía */
+  --tipo-principal: Helvetica, Arial, sans-serif;
+  --tipo-secundaria: Verdana;
+}
+
+/* Las adaptamos al modo oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --negro: #ececec;
+  }
+}
+/* Opcional */
+/* Configuramos si un usuario ha activado el modo alto contraste. (WD) */
+/* Opcional */
+/* Desactivamos los animations en el caso de que el usuario haya configurado el modo sin animation */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+/* Reseteamos los margin y paddings de todas las etiquetas */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+/* Evitamos problemas con las imagenes */
+img, picture, video, iframe, figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  /* opcional */
+  object-fit: cover;
+  /* opcional */
+  object-position: center center;
+}
+
+/* Reseteamos los enlaces para funcionar como cajas... */
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ... excepto los que se encuentran en párrafos */
+p a {
+  display: inline;
+}
+
+/* Quitamos los puntos de los <li> */
+li {
+  list-style-type: none;
+}
+
+/* Configuramos anclas suaves */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Desactivamos estilos por defecto de las principales etiquetas de texto */
+h1, h2, h3, h4, h5, h6, p, span, a, strong, blockquote, i, b, u, em {
+  font-size: 1em;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Evitamos problemas con los pseudoelementos de quotes */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+/* Configuramos el texto que seleccionamos */
+::selection {
+  background-color: var(--negro);
+  color: var(--blanco);
+}
+
+/* Nivelamos problemas de tipografías y colocación de formularios */
+form, input, textarea, select, button, label {
+  font-family: inherit;
+  font-size: inherit;
+  hyphens: auto;
+  background-color: transparent;
+  color: inherit;
+  display: block;
+  /* opcional */
+  appearance: none;
+}
+
+/* Reseteamos las tablas */
+table, tr, td {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Evitamos problemas con los SVG */
+svg {
+  width: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+/* (Probándolo, no usar en producción) En el caso de añadir una  */
+/* p svg{
+  display: inline;
+  width: initial;
+} */
+/* Configuramos la tipografía para toda la web */
+body {
+  min-height: 100vh;
+  font-size: 100%;
+  font-family: var(--tipo-principal);
+  color: var(--negro);
+  /* opcional */
+  line-height: 1.4em;
+  /* opcional */
+  hyphens: auto;
+  /* opcional */
+  font-smooth: always;
+  /* opcional */
+  -webkit-font-smoothing: antialiased;
+  /* opcional */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@font-face {
+  font-family: "Hollow";
+  src: url("/assets/arialic-hollow/Arialic Hollow.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+body {
+  min-width: 100%;
+  background-color: black;
+}
+
+html {
+  font-size: 100%;
+}
+
+.section-one {
+  min-width: 100%;
+  min-height: 100vh;
+  background-image: url("/assets/background2-modified.jpg");
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+.section-one .active-1 {
+  background-color: black;
+}
+.section-one .header {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-content: center;
+  transition: 0.1s ease-in-out;
+}
+.section-one .header .log {
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section-one .header .log img {
+  width: 65px;
+}
+.section-one .header .log h1 {
+  font-size: 0.9em;
+  text-transform: uppercase;
+  font-weight: 600;
+  opacity: 0.8;
+  margin: 0.2em;
+}
+.section-one .header .button {
+  display: flex;
+  margin: 1rem;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.section-one .header .button .svg {
+  width: 2em;
+  opacity: 0.6;
+}
+.section-one .header .nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  transition: 0.3s ease-out;
+  pointer-events: none;
+}
+.section-one .header .nav ul {
+  flex-flow: column wrap;
+  text-align: center;
+}
+.section-one .header .nav ul li {
+  margin: 1rem 0;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+}
+.section-one .header .active {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: black;
+  z-index: 1;
+  pointer-events: auto;
+}
+.section-one .home {
+  min-height: 80vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section-one .home .section {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+.section-one .home .section button {
+  margin: 5em;
+  padding: 0.1em 1.2em 0.3em;
+  border-radius: 5px;
+  font-size: 1.2em;
+  border: 1px solid;
+  text-transform: capitalize;
+  opacity: 0.7;
+}
+.section-one .home .section button:active {
+  background-color: rgba(14, 137, 198, 0.6117647059);
+  color: black;
+}
+.section-one .home .section .text {
+  width: fit-content;
+}
+.section-one .home .section .text h2 {
+  position: relative;
+  text-transform: uppercase;
+  font-size: calc(5vw + 0.6rem);
+  font-weight: 700;
+  opacity: 0.8;
+  line-height: 1.1;
+}
+.section-one .home .section .text h2:last-child::after {
+  position: absolute;
+  content: "";
+  width: 1px;
+  height: 800px;
+  left: 98;
+  top: -300;
+  transform: rotateZ(20deg);
+  background-color: gray;
+  opacity: 0.4;
+}
+.section-one .home .section .text h2:last-child span {
+  margin-left: 0.5rem;
+  color: #db8844;
+  font-weight: 1;
+}
+.section-one .home .section .text h2:last-child span:last-child {
+  position: absolute;
+  margin-left: 0.7rem;
+  top: 20;
+  font-weight: 1;
+  color: #0e8ac6;
+}
+
+.section-mid {
+  position: relative;
+  min-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  gap: 2.5rem;
+  padding: 0.8rem 0;
+}
+.section-mid .box {
+  width: calc(40vw + 2rem);
+  height: calc(25vh + 1rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+.section-mid h3 {
+  font-weight: 700;
+  font-size: calc(2vw + 0.5rem);
+  color: rgba(255, 255, 255, 0.712);
+  text-transform: uppercase;
+}
+.section-mid .box1 {
+  background: url("/assets/brett-jordan-U2q73PfHFpM-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.section-mid .box2 {
+  background: url("/assets/pedro-araujo-PDjYClxmnyk-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.section-mid .box3 {
+  background: url("/assets/marlon-silva-W79G7kIZ5OE-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.section-mid h2 {
+  font-size: 80px;
+  font-family: hollow;
+  opacity: 0.3;
+  position: absolute;
+  transform: rotateZ(90deg);
+  right: -50;
+  top: 100;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.section-mid h2 span {
+  position: absolute;
+  font-size: 80px;
+  margin: 0.5em 0.4em;
+  font-family: hollow;
+  text-transform: uppercase;
+}
+
+.section-two {
+  min-width: 100%;
+  min-height: 100vh;
+  padding: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: column wrap;
+}
+.section-two .box1 {
+  width: fit-content;
+}
+.section-two .box1 h2 {
+  position: relative;
+  font-size: calc(2vw + 1rem);
+  margin: 1rem 0;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.section-two .box1 h2::after {
+  position: absolute;
+  content: "";
+  bottom: 3;
+  width: 20px;
+  height: 3px;
+  transform: skewy(-30deg) rotateZ(30deg);
+  background-color: #0e8ac6;
+  margin: 0 0.5rem;
+}
+.section-two .box1 p {
+  opacity: 0.8;
+}
+.section-two .box1 button {
+  transform: skew(-20deg);
+  background-color: #0e8ac6;
+  color: rgba(255, 255, 255, 0.637);
+  padding: 0.2rem 0.7rem 0.4rem;
+  margin: 1.5rem 0;
+  text-transform: capitalize;
+  border-radius: 5px;
+}
+.section-two .box2 {
+  margin: 1rem 0;
+}
+.section-two .train {
+  text-align: center;
+  display: flex;
+  flex-flow: column wrap;
+  text-transform: capitalize;
+}
+
+.section-three {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  padding: 1rem 0.5rem;
+}
+.section-three .first .text h2 {
+  font-size: calc(4vw + 0.2rem);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1;
+  margin: 0 0 0.7rem;
+}
+.section-three .first .text h3 {
+  font-size: calc(7vw + 0.2rem);
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 1;
+  color: #0e8ac6;
+}
+.section-three .first .button {
+  display: none;
+}
+.section-three .final {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section-three .final .box1, .section-three .final .box2 {
+  display: none;
+}
+.section-three .final .box3 {
+  max-width: 400px;
+  position: relative;
+}
+.section-three .final .box3 .info {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border: 1px solid greenyellow;
+  width: 10rem;
+  height: 5vh;
+}
+.section-three .final .box3 img {
+  width: 65vw;
+  height: 45vh;
+}
+
+.section-four {
+  height: 100vh;
+  width: 100%;
+  padding: 1rem 0;
+}
+.section-four .text {
+  margin: 2rem 1.5rem;
+}
+.section-four .text h2 {
+  font-family: hollow;
+  line-height: 1;
+  font-size: 3rem;
+  text-transform: uppercase;
+  opacity: 0.89;
+}
+.section-four .text h3 {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  opacity: 0.6;
+}
+.section-four .button {
+  width: 100%;
+  padding: 2rem;
+}
+.section-four .button button {
+  padding: 0.1rem 0.5rem 0.3rem;
+  width: 150px;
+  background-color: #0e8ac6;
+  transform: skew(-15deg);
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+}
+.section-four .section-container {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section-four .container {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+.section-four .container .acord_item {
+  background-color: rgb(77, 77, 77);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  box-shadow: 0.5rem 2px 0.5rem rgba(0, 0, 0, 0.1);
+}
+.section-four .container .acord_item:hover {
+  border: 3px solid #0e8ac6;
+}
+.section-four .container .acord_item:target .content {
+  max-height: 20rem;
+}
+.section-four .container .acord_item:target .acord_link .add {
+  display: none;
+}
+.section-four .container .acord_item:target .acord_link .remove {
+  display: block;
+}
+.section-four .container .acord_item .acord_link {
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+.section-four .container .acord_item .acord_link .remove {
+  display: none;
+}
+.section-four .container .acord_item .content {
+  max-height: 0;
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.65s;
+  padding: 0 0.5rem;
+  opacity: 0.6;
+}
+.section-four .container .acord_item .content::before {
+  content: "";
+  position: absolute;
+  width: 0.6rem;
+  height: 90%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+/*# sourceMappingURL=style.css.map */
